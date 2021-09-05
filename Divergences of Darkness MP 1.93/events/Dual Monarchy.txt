@@ -1,0 +1,63 @@
+country_event = {
+
+	id = 650201
+	title = "DUA1.T"
+	desc = "DUA1.D"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "650201.A"
+		set_country_flag = french_integration
+		add_accepted_culture = french
+		464 = {
+			add_core = DUA
+		}
+		ai_chance = {
+		factor = 33
+		}
+	}
+
+	option = {
+		name = "650201.B"
+		set_country_flag = english_integration
+		add_accepted_culture = english
+		capital = 300
+		ai_chance = {
+			factor = 33
+			}
+		}
+	option = {
+		name = "650201.C"
+		set_country_flag = dual_integration
+		464 = {
+			add_core = DUA
+		}
+		ai_chance = {
+			factor = 34
+		}
+	}
+}
+                
+country_event = {
+         
+		 news = yes
+		 news_desc_long = "admin_scotland_NEWS_LONG"
+		 news_desc_medium = "admin_scotland_NEWS_MEDIUM"
+		 news_desc_short = "admin_scotland_NEWS_SHORT"
+
+         id = 755765
+         title = "DUA0.TITLE"
+         desc = "DUA0.DESC"
+
+         is_triggered_only = yes
+        {
+         option = {
+                name = "755765.A"
+                set_country_flag = scotland_acc
+                SCO = {
+                  all_core = {add_core = THIS }
+                 }
+        }
+    }
+}

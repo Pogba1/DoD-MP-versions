@@ -1,0 +1,144 @@
+political_decisions = {
+
+  dual_monarchy_direction = {
+    potential = {
+      tag = DUA
+      NOT = { has_global_flag = choice_pokemon }
+    }
+    allow = {
+      tag = DUA
+    }
+    effect = {
+      set_global_flag = choice_pokemon
+      country_event = 650201
+    }
+  }
+
+  #Integrate Culture decisions
+  dm_integrate_breton = {
+    potential = {
+      OR = {
+        tag = DUA
+        AND = {
+          tag = TRP
+          mass_politics = 1
+        }
+      }
+      NOT = { accepted_culture = breton }
+      NOT = { has_global_flag = enacted_anglois_schooling }
+    }
+    allow = {
+      state_n_government = 1
+      BRT = {
+        all_core = { owned_by = THIS }
+      }
+    }
+    effect = {
+      prestige = 5
+      add_accepted_culture = breton
+    }
+  }
+
+  dm_integrate_welsh = {
+    potential = {
+      OR = {
+        tag = DUA
+        AND = {
+          tag = TRP
+          mass_politics = 1
+        }
+      }
+      NOT = { accepted_culture = welsh }
+      NOT = { has_global_flag = enacted_anglois_schooling }
+      OR = {
+        has_country_flag = english_integration
+        has_country_flag = dual_integration
+      }
+    }
+    allow = {
+      state_n_government = 1
+      WLS = {
+        all_core = { owned_by = THIS }
+      }
+    }
+    effect = {
+      prestige = 5
+      add_accepted_culture = welsh
+    }
+  }
+
+  dm_anglois_success = {
+    potential = {
+      OR = {
+        tag = DUA
+        tag = TRP
+      }
+      NOT = { has_country_flag = dm_anglois_integrated }
+      OR = {
+        has_country_flag = dual_integration
+        AND = {
+          tag = TRP
+          revolution_n_counterrevolution = 1
+        }
+      }
+    }
+    allow = {
+      year = 1865
+    }
+    effect = {
+      prestige = 10
+      add_accepted_culture = english
+      add_accepted_culture = french
+      set_country_flag = dm_anglois_integrated
+    }
+  }
+
+  integrating_basque = {
+    potential = {
+      tag = DUA
+      NOT = { accepted_culture = basque }
+      NOT = { has_global_flag = enacted_anglois_schooling }
+      accepted_culture = provencal
+    }
+    allow = {
+      NAV = {
+        all_core = { owned_by = THIS }
+      }
+    }
+    effect = {
+      prestige = 5
+      add_accepted_culture = basque
+      NAV = {
+        all_core = { add_core = THIS }
+      }
+    }
+  }
+
+  #Expansion decisions
+
+  form_franche_comte = {
+		picture = apanage
+		potential = {
+      OR = {
+  			tag = DUA
+        tag = TRP
+      }
+			NOT = { has_country_flag = franchecomte }
+      NOT = { has_country_flag = english_integration }
+		}
+		allow = {
+			is_greater_power = yes
+			NOT = { war = yes }
+			owns = 428
+		}
+		effect = {
+			prestige = 5
+			set_country_flag = franchecomte
+			FRA_428 = {
+				add_core = THIS
+			}
+		}
+	}
+
+}
+
